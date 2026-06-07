@@ -1,0 +1,328 @@
+{
+  "business_domain": "Universal Office and School Management System",
+
+  "default_table": "employees",
+
+  "query_generation_rules": {
+    "never_use_select_star": true,
+    "use_only_requested_columns": true,
+    "include_primary_key_only_when_requested": false,
+    "infer_entity_from_context": true,
+    "default_limit": 100
+  },
+
+  "domain_hints": [
+    {
+      "keywords": [
+        "school",
+        "academy",
+        "campus",
+        "student",
+        "teacher",
+        "class",
+        "classroom",
+        "grade",
+        "marks",
+        "attendance"
+      ],
+      "default_table": "students",
+      "context": "school"
+    },
+    {
+      "keywords": [
+        "employee",
+        "employees",
+        "staff",
+        "office",
+        "company",
+        "corporate",
+        "department",
+        "project",
+        "salary"
+      ],
+      "default_table": "employees",
+      "context": "office"
+    }
+  ],
+
+  "entities": [
+    {
+      "name": "employee",
+      "table": "employees",
+      "aliases": [
+        "employees",
+        "staff",
+        "worker",
+        "workers",
+        "personnel",
+        "team member",
+        "office staff"
+      ]
+    },
+    {
+      "name": "student",
+      "table": "students",
+      "aliases": [
+        "students",
+        "pupil",
+        "learner",
+        "learners",
+        "kid",
+        "kids",
+        "child",
+        "children"
+      ]
+    },
+    {
+      "name": "teacher",
+      "table": "teachers",
+      "aliases": [
+        "teacher",
+        "teachers",
+        "instructor",
+        "instructors",
+        "educator",
+        "educators",
+        "professor",
+        "professors"
+      ]
+    },
+    {
+      "name": "school",
+      "table": "schools",
+      "aliases": [
+        "school",
+        "schools",
+        "academy",
+        "campus",
+        "institution"
+      ]
+    },
+    {
+      "name": "department",
+      "table": "departments",
+      "aliases": [
+        "department",
+        "departments",
+        "division",
+        "unit"
+      ]
+    },
+    {
+      "name": "office",
+      "table": "offices",
+      "aliases": [
+        "office",
+        "offices",
+        "branch",
+        "workplace"
+      ]
+    },
+    {
+      "name": "project",
+      "table": "projects",
+      "aliases": [
+        "project",
+        "projects",
+        "initiative",
+        "initiatives"
+      ]
+    }
+  ],
+
+  "attribute_mappings": {
+    "employee name": ["first_name", "last_name"],
+    "employee names": ["first_name", "last_name"],
+
+    "student name": ["first_name", "last_name"],
+    "student names": ["first_name", "last_name"],
+
+    "teacher name": ["first_name", "last_name"],
+    "teacher names": ["first_name", "last_name"],
+
+    "name": ["first_name", "last_name"],
+    "names": ["first_name", "last_name"],
+
+    "salary": ["salary"],
+    "pay": ["salary"],
+    "income": ["salary"],
+    "compensation": ["salary"],
+
+    "email": ["email"],
+    "emails": ["email"],
+
+    "phone": ["phone"],
+    "mobile": ["phone"],
+    "contact": ["phone"],
+
+    "age": ["age"],
+    "ages": ["age"],
+
+    "gender": ["gender"],
+
+    "subject": ["subject"],
+    "subjects": ["subject"],
+
+    "grade": ["grade"],
+    "grades": ["grade"],
+
+    "marks": ["marks"],
+    "score": ["marks"],
+    "scores": ["marks"],
+
+    "department": ["department_id"],
+    "office": ["office_id"],
+    "school": ["school_id"]
+  },
+
+  "aggregations": {
+    "count": "COUNT",
+    "total": "SUM",
+    "sum": "SUM",
+    "average": "AVG",
+    "avg": "AVG",
+    "highest": "MAX",
+    "maximum": "MAX",
+    "lowest": "MIN",
+    "minimum": "MIN"
+  },
+
+  "sorting_keywords": {
+    "top": "DESC",
+    "highest": "DESC",
+    "largest": "DESC",
+    "best": "DESC",
+    "lowest": "ASC",
+    "smallest": "ASC",
+    "bottom": "ASC"
+  },
+
+  "comparison_keywords": {
+    "greater than": ">",
+    "more than": ">",
+    "above": ">",
+    "less than": "<",
+    "below": "<",
+    "equal to": "=",
+    "at least": ">=",
+    "at most": "<="
+  },
+
+  "group_by_keywords": {
+    "department wise": "department_id",
+    "school wise": "school_id",
+    "grade wise": "grade",
+    "teacher wise": "teacher_id",
+    "office wise": "office_id"
+  },
+
+  "date_keywords": {
+    "today": "CURRENT_DATE",
+    "this month": "MONTH(CURRENT_DATE)",
+    "this year": "YEAR(CURRENT_DATE)",
+    "last year": "YEAR(CURRENT_DATE)-1"
+  },
+
+  "column_selection_rules": [
+    {
+      "phrase": "employee names",
+      "columns": ["first_name", "last_name"]
+    },
+    {
+      "phrase": "student names",
+      "columns": ["first_name", "last_name"]
+    },
+    {
+      "phrase": "teacher names",
+      "columns": ["first_name", "last_name"]
+    },
+    {
+      "phrase": "teacher names and subjects",
+      "columns": ["first_name", "last_name", "subject"]
+    },
+    {
+      "phrase": "employee names and salaries",
+      "columns": ["first_name", "last_name", "salary"]
+    },
+    {
+      "phrase": "student names and grades",
+      "columns": ["first_name", "last_name", "grade"]
+    }
+  ],
+
+  "join_hints": [
+    {
+      "from": "employees",
+      "to": "departments",
+      "on": "employees.department_id = departments.department_id"
+    },
+    {
+      "from": "employees",
+      "to": "offices",
+      "on": "employees.office_id = offices.office_id"
+    },
+    {
+      "from": "students",
+      "to": "schools",
+      "on": "students.school_id = schools.school_id"
+    },
+    {
+      "from": "students",
+      "to": "classrooms",
+      "on": "students.class_id = classrooms.class_id"
+    },
+    {
+      "from": "teachers",
+      "to": "schools",
+      "on": "teachers.school_id = schools.school_id"
+    },
+    {
+      "from": "enrollments",
+      "to": "students",
+      "on": "enrollments.student_id = students.student_id"
+    },
+    {
+      "from": "enrollments",
+      "to": "courses",
+      "on": "enrollments.course_id = courses.course_id"
+    }
+  ],
+
+  "sql_generation_instructions": [
+    "Never generate SELECT * unless user explicitly requests all details.",
+    "Use only columns mentioned in the question.",
+    "Expand name into first_name and last_name.",
+    "Teacher names means first_name,last_name from teachers.",
+    "Student names means first_name,last_name from students.",
+    "Employee names means first_name,last_name from employees.",
+    "Avoid unrelated columns.",
+    "Prefer explicit column names over wildcard selection."
+  ],
+
+  "examples": [
+    {
+      "question": "Show teacher names and subjects",
+      "sql": "SELECT first_name, last_name, subject FROM teachers;"
+    },
+    {
+      "question": "Show employee names and salaries",
+      "sql": "SELECT first_name, last_name, salary FROM employees;"
+    },
+    {
+      "question": "Show student names and grades",
+      "sql": "SELECT first_name, last_name, grade FROM students;"
+    },
+    {
+      "question": "Count employees",
+      "sql": "SELECT COUNT(*) FROM employees;"
+    },
+    {
+      "question": "Highest employee salary",
+      "sql": "SELECT MAX(salary) FROM employees;"
+    },
+    {
+      "question": "Top 5 employees by salary",
+      "sql": "SELECT first_name, last_name, salary FROM employees ORDER BY salary DESC LIMIT 5;"
+    }
+  ]
+}

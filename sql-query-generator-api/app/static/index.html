@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL Query Generator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="glow-title">SQL Query Generator</h1>
+    </header>
+
+    <section class="input-section">
+      <label for="query-input">Your question</label>
+      <textarea
+        id="query-input"
+        rows="4"
+        placeholder="Type anything: school, office, employees, students, teachers, kids…"
+      ></textarea>
+      <p class="hint">Press <kbd>Enter</kbd> or click Execute</p>
+      <button id="execute-btn" type="button">Execute</button>
+    </section>
+
+    <section class="output-section">
+      <label for="sql-output">SQL output</label>
+      <pre id="sql-output" aria-live="polite"></pre>
+    </section>
+
+    <section class="examples">
+      <span class="examples-label">Try:</span>
+      <button type="button" class="chip" data-query="Generate 50 employees give me the names id etc their details">Employees + details</button>
+      <button type="button" class="chip" data-query="Generate 30 students from school give me names id their details">Students (school)</button>
+      <button type="button" class="chip" data-query="List 20 teachers with names and subject">Teachers</button>
+      <button type="button" class="chip" data-query="Show 15 kids give me names id details">Kids</button>
+      <button type="button" class="chip" data-query="Generate 10 offices with all details">Offices</button>
+      <button type="button" class="chip" data-query="List all schools">Schools</button>
+    </section>
+
+    <p id="error-msg" class="error" hidden></p>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

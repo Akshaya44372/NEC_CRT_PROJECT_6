@@ -1,0 +1,283 @@
+{
+"database": "universal_db",
+"dialect": "mysql",
+
+"tables": [
+{
+"name": "employees",
+"description": "Company employees",
+"columns": [
+{"name": "employee_id", "type": "INT", "primary_key": true},
+{"name": "first_name", "type": "VARCHAR(50)"},
+{"name": "last_name", "type": "VARCHAR(50)"},
+{"name": "age", "type": "INT"},
+{"name": "gender", "type": "VARCHAR(10)"},
+{"name": "email", "type": "VARCHAR(100)"},
+{"name": "phone", "type": "VARCHAR(20)"},
+{"name": "hire_date", "type": "DATE"},
+{"name": "salary", "type": "DECIMAL(10,2)"},
+{"name": "department_id", "type": "INT"},
+{"name": "office_id", "type": "INT"},
+{"name": "manager_id", "type": "INT"},
+{"name": "job_title", "type": "VARCHAR(100)"},
+{"name": "status", "type": "VARCHAR(20)"}
+]
+},
+{
+  "name": "departments",
+  "description": "Company departments",
+  "columns": [
+    {"name": "department_id", "type": "INT", "primary_key": true},
+    {"name": "department_name", "type": "VARCHAR(100)"},
+    {"name": "location", "type": "VARCHAR(100)"},
+    {"name": "budget", "type": "DECIMAL(12,2)"}
+  ]
+},
+
+{
+  "name": "offices",
+  "description": "Company office locations",
+  "columns": [
+    {"name": "office_id", "type": "INT", "primary_key": true},
+    {"name": "office_name", "type": "VARCHAR(100)"},
+    {"name": "building", "type": "VARCHAR(100)"},
+    {"name": "floor", "type": "VARCHAR(20)"},
+    {"name": "city", "type": "VARCHAR(80)"},
+    {"name": "state", "type": "VARCHAR(80)"},
+    {"name": "country", "type": "VARCHAR(80)"}
+  ]
+},
+
+{
+  "name": "projects",
+  "description": "Company projects",
+  "columns": [
+    {"name": "project_id", "type": "INT", "primary_key": true},
+    {"name": "project_name", "type": "VARCHAR(150)"},
+    {"name": "department_id", "type": "INT"},
+    {"name": "budget", "type": "DECIMAL(12,2)"},
+    {"name": "start_date", "type": "DATE"},
+    {"name": "end_date", "type": "DATE"},
+    {"name": "status", "type": "VARCHAR(30)"}
+  ]
+},
+
+{
+  "name": "employee_projects",
+  "description": "Employee project assignments",
+  "columns": [
+    {"name": "employee_id", "type": "INT"},
+    {"name": "project_id", "type": "INT"},
+    {"name": "role", "type": "VARCHAR(100)"}
+  ]
+},
+
+{
+  "name": "schools",
+  "description": "Schools and campuses",
+  "columns": [
+    {"name": "school_id", "type": "INT", "primary_key": true},
+    {"name": "school_name", "type": "VARCHAR(150)"},
+    {"name": "city", "type": "VARCHAR(100)"},
+    {"name": "principal_name", "type": "VARCHAR(100)"}
+  ]
+},
+
+{
+  "name": "teachers",
+  "description": "School teachers",
+  "columns": [
+    {"name": "teacher_id", "type": "INT", "primary_key": true},
+    {"name": "first_name", "type": "VARCHAR(50)"},
+    {"name": "last_name", "type": "VARCHAR(50)"},
+    {"name": "age", "type": "INT"},
+    {"name": "gender", "type": "VARCHAR(10)"},
+    {"name": "subject", "type": "VARCHAR(80)"},
+    {"name": "salary", "type": "DECIMAL(10,2)"},
+    {"name": "school_id", "type": "INT"}
+  ]
+},
+
+{
+  "name": "classrooms",
+  "description": "School classrooms",
+  "columns": [
+    {"name": "class_id", "type": "INT", "primary_key": true},
+    {"name": "class_name", "type": "VARCHAR(80)"},
+    {"name": "grade_level", "type": "VARCHAR(10)"},
+    {"name": "teacher_id", "type": "INT"},
+    {"name": "school_id", "type": "INT"}
+  ]
+},
+
+{
+  "name": "students",
+  "description": "School students",
+  "columns": [
+    {"name": "student_id", "type": "INT", "primary_key": true},
+    {"name": "first_name", "type": "VARCHAR(50)"},
+    {"name": "last_name", "type": "VARCHAR(50)"},
+    {"name": "age", "type": "INT"},
+    {"name": "gender", "type": "VARCHAR(10)"},
+    {"name": "grade", "type": "VARCHAR(10)"},
+    {"name": "class_id", "type": "INT"},
+    {"name": "school_id", "type": "INT"},
+    {"name": "parent_id", "type": "INT"},
+    {"name": "enrollment_date", "type": "DATE"}
+  ]
+},
+
+{
+  "name": "parents",
+  "description": "Parents or guardians",
+  "columns": [
+    {"name": "parent_id", "type": "INT", "primary_key": true},
+    {"name": "parent_name", "type": "VARCHAR(100)"},
+    {"name": "phone", "type": "VARCHAR(20)"},
+    {"name": "email", "type": "VARCHAR(100)"}
+  ]
+},
+
+{
+  "name": "courses",
+  "description": "School courses",
+  "columns": [
+    {"name": "course_id", "type": "INT", "primary_key": true},
+    {"name": "course_name", "type": "VARCHAR(100)"},
+    {"name": "teacher_id", "type": "INT"},
+    {"name": "school_id", "type": "INT"}
+  ]
+},
+
+{
+  "name": "enrollments",
+  "description": "Student course enrollments",
+  "columns": [
+    {"name": "enrollment_id", "type": "INT", "primary_key": true},
+    {"name": "student_id", "type": "INT"},
+    {"name": "course_id", "type": "INT"},
+    {"name": "marks", "type": "DECIMAL(5,2)"},
+    {"name": "grade", "type": "VARCHAR(5)"}
+  ]
+},
+
+{
+  "name": "attendance",
+  "description": "Student attendance records",
+  "columns": [
+    {"name": "attendance_id", "type": "INT", "primary_key": true},
+    {"name": "student_id", "type": "INT"},
+    {"name": "attendance_date", "type": "DATE"},
+    {"name": "status", "type": "VARCHAR(20)"}
+  ]
+}
+],
+
+"relationships": [
+{
+"from_table": "employees",
+"from_column": "department_id",
+"to_table": "departments",
+"to_column": "department_id",
+"type": "many_to_one"
+},
+{
+"from_table": "employees",
+"from_column": "office_id",
+"to_table": "offices",
+"to_column": "office_id",
+"type": "many_to_one"
+},
+{
+"from_table": "projects",
+"from_column": "department_id",
+"to_table": "departments",
+"to_column": "department_id",
+"type": "many_to_one"
+},
+{
+"from_table": "employee_projects",
+"from_column": "employee_id",
+"to_table": "employees",
+"to_column": "employee_id",
+"type": "many_to_one"
+},
+{
+"from_table": "employee_projects",
+"from_column": "project_id",
+"to_table": "projects",
+"to_column": "project_id",
+"type": "many_to_one"
+},
+{
+"from_table": "teachers",
+"from_column": "school_id",
+"to_table": "schools",
+"to_column": "school_id",
+"type": "many_to_one"
+},
+{
+"from_table": "students",
+"from_column": "school_id",
+"to_table": "schools",
+"to_column": "school_id",
+"type": "many_to_one"
+},
+{
+"from_table": "students",
+"from_column": "class_id",
+"to_table": "classrooms",
+"to_column": "class_id",
+"type": "many_to_one"
+},
+{
+"from_table": "students",
+"from_column": "parent_id",
+"to_table": "parents",
+"to_column": "parent_id",
+"type": "many_to_one"
+},
+{
+"from_table": "classrooms",
+"from_column": "teacher_id",
+"to_table": "teachers",
+"to_column": "teacher_id",
+"type": "many_to_one"
+},
+{
+"from_table": "courses",
+"from_column": "teacher_id",
+"to_table": "teachers",
+"to_column": "teacher_id",
+"type": "many_to_one"
+},
+{
+"from_table": "courses",
+"from_column": "school_id",
+"to_table": "schools",
+"to_column": "school_id",
+"type": "many_to_one"
+},
+{
+"from_table": "enrollments",
+"from_column": "student_id",
+"to_table": "students",
+"to_column": "student_id",
+"type": "many_to_one"
+},
+{
+"from_table": "enrollments",
+"from_column": "course_id",
+"to_table": "courses",
+"to_column": "course_id",
+"type": "many_to_one"
+},
+{
+"from_table": "attendance",
+"from_column": "student_id",
+"to_table": "students",
+"to_column": "student_id",
+"type": "many_to_one"
+}
+]
+}
