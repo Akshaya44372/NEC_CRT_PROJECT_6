@@ -8,7 +8,7 @@ Converts natural language requests into **valid, executable SQL only**. Supports
 - **GET /metadata** — business entities, aliases, phrase mappings
 - **POST /generate** — JSON `{"sql": "..."}`
 - **POST /generate/sql** — raw SQL only (`text/plain`)
-- **GET /generate?q=...** — quick SQL-only testing
+- **GET /generate?q=...** — quick SQL-only testing                  
 - **GET /** — Web UI (textarea + Execute → SQL-only output)
 
 ## Quick Start
